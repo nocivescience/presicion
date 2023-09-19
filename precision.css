@@ -4,7 +4,7 @@ body {
   --wall-color: #36382e;
   --joystick-color: #210124;
   --joystick-head-color: #f06449;
-  --ball-color: #f06449;
+  --ball-color: green;
   --end-color: #7d82b8;
   --text-color: #210124;
 
@@ -30,7 +30,7 @@ body {
   grid-template-columns: auto 150px;
   grid-template-rows: 1fr auto 1fr;
   gap: 30px;
-  perspective: 600px;
+  perspective: 200px;
 }
 
 #maze {

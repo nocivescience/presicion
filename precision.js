@@ -26,7 +26,7 @@ const closestItCanBe = (cap, ball) => {
   let angle = getAngle(cap, ball);
 
   const deltaX = Math.cos(angle) * (wallW / 2 + ballSize / 2);
-  const deltaY = Math.sin(angle) * (wallW / 2 + ballSize / 2);
+  const deltaY = Math.sin(angle) * (wallW / 2 + ballSize / 2); 
 
   return { x: cap.x + deltaX, y: cap.y + deltaY };
 };
@@ -116,7 +116,11 @@ resetGame();
 balls.forEach(({ x, y }) => {
   const ball = document.createElement("div");
   ball.setAttribute("class", "ball");
-  ball.style.cssText = `left: ${x}px; top: ${y}px; `;
+  ball.style.cssText = `
+  left: ${x}px; 
+  top: ${y}px; 
+  background-color: green;
+  `;
 
   mazeElement.appendChild(ball);
   ballElements.push(ball);
@@ -225,6 +229,9 @@ walls.forEach(({ x, y, horizontal, length }) => {
       width: ${wallW}px;
       height: ${length}px;
       transform: rotate(${horizontal ? -90 : 0}deg);
+      ${
+        `background-color: ${horizontal ? "#000" : "#fff"};`
+      }
     `;
 
   mazeElement.appendChild(wall);
@@ -637,7 +644,7 @@ function main(timestamp) {
 
             if (distance <= holeSize / 2) {
               // The ball fell into a hole
-              holeElements[hi].style.backgroundColor = "red";
+              holeElements[hi].style.backgroundColor = "green";
               throw Error("The ball fell into a hole");
             }
           });

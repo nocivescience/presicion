@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #elemento{
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+        background-color: red;
+    }
+</style>
+<body>
+    <div mi-color="red" id="elemento"></div>
+    <script>
+        const elemento= document.getElementById("elemento");
+        elemento.setAttribute("mi-color","yellow");
+        document.addEventListener("click",()=>{
+            console.log(elemento.getAttribute("mi-color"));
+            const estilos= document.createElement("style");
+            document.head.appendChild(estilos);
+            estilos.innerHTML=`
+                #elemento{
+                    background-color: ${elemento.getAttribute("mi-color")};
+                    width: 100px;
+                    height: 100px;
+                    border: 1px solid black;
+                    animation: glow 1s infinite linear;
+                }
+                @keyframes glow {
+                    0%{
+                        transform: rotate(0deg);
+                    }
+                    50%{
+                        transform: rotate(180deg);
+                    }
+                    100%{
+                        transform: rotate(360deg);
+                    }
+                }
+            `;
+        })
+    </script>
+</body>
+</html>
